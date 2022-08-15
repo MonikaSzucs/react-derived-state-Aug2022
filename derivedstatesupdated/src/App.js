@@ -5,10 +5,9 @@ function App() {
     { id: 1, name: "Kyle", age: 27 },
     { id: 2, name: "Sally", age: 32 },
     { id: 3, name: "Mike", age: 54 },
-    { id: 4, name: "Jim", age: 16 },
+    { id: 4, name: "Kim", age: 16 },
   ])
-  const [selectedUserId, setSelectedUserId] = useState()
-  const selectedUser = users.find(user => user.id === selectedUserId)
+  const [selectedUser, setSelectedUser] = useState();
 
   function incrementAge(id) {
     setUsers(currUsers => {
@@ -16,14 +15,15 @@ function App() {
         if(user.id === id) {
           return { ...user, age: user.age + 1}
         } else {
-          return user
+          return user;
         }
       })
     })
   }
 
   function selectUser(id) {
-    setSelectedUserId(id)
+    const user = users.find(user => user.id === id)
+    setSelectedUser(user)
   }
 
   return (
@@ -35,7 +35,7 @@ function App() {
           : `${selectedUser.name} is ${selectedUser.age} years old`}
       </h3>
       {users.map(user => (
-        <div
+        <div div
           key={user.id}
           style={{
             display:"grid",
